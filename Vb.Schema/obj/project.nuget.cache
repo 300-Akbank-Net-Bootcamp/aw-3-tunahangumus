@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "deT95dSCgzf/WCqCvPa1fKnbipr+M3QW6NXOtaau4LlsbriYJvh5j4LvLEmJp0QV9675N9G9GQ04Q+c7QXKErQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fehmi\\source\\repos\\aw-3-tunahangumus\\Vb.Schema\\Vb.Schema.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fehmi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
