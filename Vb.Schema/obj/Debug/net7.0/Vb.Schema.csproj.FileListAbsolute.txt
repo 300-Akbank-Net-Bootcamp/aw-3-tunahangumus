@@ -1,0 +1,16 @@
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\bin\Debug\net7.0\Vb.Schema.deps.json
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\bin\Debug\net7.0\Vb.Schema.dll
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\bin\Debug\net7.0\Vb.Schema.pdb
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\bin\Debug\net7.0\Vb.Base.dll
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\bin\Debug\net7.0\Vb.Base.pdb
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\Vb.Schema.csproj.AssemblyReference.cache
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\Vb.Schema.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\Vb.Schema.AssemblyInfoInputs.cache
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\Vb.Schema.AssemblyInfo.cs
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\Vb.Schema.csproj.CoreCompileInputs.cache
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\Vb.Schema.sourcelink.json
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\Vb.Schema.csproj.CopyComplete
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\Vb.Schema.dll
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\refint\Vb.Schema.dll
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\Vb.Schema.pdb
+C:\Users\fehmi\source\repos\aw-3-tunahangumus\Vb.Schema\obj\Debug\net7.0\ref\Vb.Schema.dll

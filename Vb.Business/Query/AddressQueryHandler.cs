@@ -26,7 +26,9 @@ public class AddressQueryHandler :
         CancellationToken cancellationToken)
     {
         var list = await dbContext.Set<Address>()
-            .Include(x => x.Customer).ToListAsync(cancellationToken);
+            .Include(x => x.Customer)
+            .Where(x => x.IsActive == true)
+            .ToListAsync(cancellationToken);
         
         var mappedList = mapper.Map<List<Address>, List<AddressResponse>>(list);
          return new ApiResponse<List<AddressResponse>>(mappedList);
@@ -37,7 +39,8 @@ public class AddressQueryHandler :
     {
         var entity =  await dbContext.Set<Address>()
             .Include(x => x.Customer)
-            .FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+			.Where(x => x.IsActive == true)
+			.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
 
         if (entity == null)
         {

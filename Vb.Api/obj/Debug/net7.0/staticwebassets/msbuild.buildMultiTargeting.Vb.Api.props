@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Vb.Api.props" />
+</Project>

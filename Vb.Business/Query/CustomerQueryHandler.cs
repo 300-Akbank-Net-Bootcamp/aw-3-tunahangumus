@@ -29,7 +29,8 @@ public class CustomerQueryHandler :
         var list = await dbContext.Set<Customer>()
             .Include(x => x.Accounts)
             .Include(x => x.Contacts)
-            .Include(x => x.Addresses).ToListAsync(cancellationToken);
+			.Where(x => x.IsActive == true)
+			.Include(x => x.Addresses).ToListAsync(cancellationToken);
         
         var mappedList = mapper.Map<List<Customer>, List<CustomerResponse>>(list);
          return new ApiResponse<List<CustomerResponse>>(mappedList);
@@ -42,7 +43,8 @@ public class CustomerQueryHandler :
             .Include(x => x.Accounts)
             .Include(x => x.Contacts)
             .Include(x => x.Addresses)
-            .FirstOrDefaultAsync(x => x.CustomerNumber == request.Id, cancellationToken);
+			.Where(x => x.IsActive == true)
+			.FirstOrDefaultAsync(x => x.CustomerNumber == request.Id, cancellationToken);
 
         if (entity == null)
         {
@@ -60,10 +62,10 @@ public class CustomerQueryHandler :
             .Include(x => x.Accounts)
             .Include(x => x.Contacts)
             .Include(x => x.Addresses)
-            .Where(x =>
+            .Where(x => x.IsActive == true && (
             x.FirstName.ToUpper().Contains(request.FirstName.ToUpper()) ||
             x.LastName.ToUpper().Contains(request.LastName.ToUpper()) ||
-            x.IdentityNumber.ToUpper().Contains(request.IdentiyNumber.ToUpper())
+            x.IdentityNumber.ToUpper().Contains(request.IdentiyNumber.ToUpper()))
         ).ToListAsync(cancellationToken);
         
         var mappedList = mapper.Map<List<Customer>, List<CustomerResponse>>(list);
