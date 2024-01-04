@@ -11,4 +11,4 @@ public record DeleteAccountTransactionCommand(int Id) : IRequest<ApiResponse>;
 
 public record GetAllAccountTransactionQuery() : IRequest<ApiResponse<List<AccountTransactionResponse>>>;
 public record GetAccountTransactionByIdQuery(int Id) : IRequest<ApiResponse<AccountTransactionResponse>>;
-public record GetAccountTransactionByParameterQuery(string FirstName, string LastName, string IdentiyNumber) : IRequest<ApiResponse<List<AccountTransactionResponse>>>;
+public record GetAccountTransactionByParameterQuery(string ReferenceNumber, int AccountId) : IRequest<ApiResponse<List<AccountTransactionResponse>>>;

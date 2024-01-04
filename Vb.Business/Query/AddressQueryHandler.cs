@@ -50,4 +50,19 @@ public class AddressQueryHandler :
         var mapped = mapper.Map<Address, AddressResponse>(entity);
         return new ApiResponse<AddressResponse>(mapped);
     }
+
+	public async Task<ApiResponse<List<AddressResponse>>> Handle(GetAddressByParameterQuery request,
+		CancellationToken cancellationToken)
+	{
+		var list = await dbContext.Set<Address>()
+			.Include(x => x.Customer)
+			.Where(x => x.IsActive == true && (
+            (x.Customer.FirstName.ToUpper()+" "+x.Customer.LastName.ToUpper()).Contains(request.FirstName.ToUpper()+" "+request.LastName.ToUpper()) ||
+            (x.Customer.IdentityNumber.Contains(request.IdentiyNumber))
+            )
+		).ToListAsync(cancellationToken);
+
+		var mappedList = mapper.Map<List<Address>, List<AddressResponse>>(list);
+		return new ApiResponse<List<AddressResponse>>(mappedList);
+	}
 }

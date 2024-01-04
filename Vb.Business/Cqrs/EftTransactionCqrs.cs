@@ -10,4 +10,4 @@ public record DeleteEftTransactionCommand(int Id) : IRequest<ApiResponse>;
 
 public record GetAllEftTransactionQuery() : IRequest<ApiResponse<List<EftTransactionResponse>>>;
 public record GetEftTransactionByIdQuery(int Id) : IRequest<ApiResponse<EftTransactionResponse>>;
-public record GetEftTransactionByParameterQuery(string FirstName, string LastName, string IdentiyNumber) : IRequest<ApiResponse<List<EftTransactionResponse>>>;
+public record GetEftTransactionByParameterQuery(string senderIban, int amount, DateTime date) : IRequest<ApiResponse<List<EftTransactionResponse>>>;

@@ -34,13 +34,24 @@ public class CustomerCommandHandler :
         }
         
         var entity = mapper.Map<CustomerRequest, Customer>(request.Model);
-        entity.CustomerNumber = new Random().Next(1000000, 9999999);
-        
-        var entityResult = await dbContext.AddAsync(entity, cancellationToken);
-        await dbContext.SaveChangesAsync(cancellationToken);
+        while (true)
+        {
+			entity.CustomerNumber = new Random().Next(1000000, 9999999);
+            var checkCustomerNum = await dbContext.Set<Customer>().Where(x => x.CustomerNumber == entity.CustomerNumber)
+            .FirstOrDefaultAsync(cancellationToken);
+			if (checkCustomerNum != null)
+			{
+                continue;
+            }else
+            {
+				var entityResult = await dbContext.AddAsync(entity, cancellationToken);
+				await dbContext.SaveChangesAsync(cancellationToken);
 
-        var mapped = mapper.Map<Customer, CustomerResponse>(entityResult.Entity);
-        return new ApiResponse<CustomerResponse>(mapped);
+				var mapped = mapper.Map<Customer, CustomerResponse>(entityResult.Entity);
+				return new ApiResponse<CustomerResponse>(mapped);
+			}
+		}
+        
     }
 
     public async Task<ApiResponse> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)

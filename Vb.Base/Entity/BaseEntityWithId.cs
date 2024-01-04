@@ -1,7 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Vb.Base.Entity;
 
 public abstract class BaseEntityWithId : BaseEntity
 {
+    [Key]
     public int Id { get; set; }
 }
 public abstract class BaseEntity
