@@ -52,10 +52,18 @@ public class ContactQueryHandler :
 		return new ApiResponse<ContactResponse>(mapped);
 	}
 
-	//  I think GetContactByParameterQuery is unneccessary
-	//public async Task<ApiResponse<List<ContactResponse>>> Handle(GetContactByParameterQuery request,
-	//	CancellationToken cancellationToken)
-	//{
-	//	return new ApiResponse<List<ContactResponse>>(mappedList);
-	//}
+	public async Task<ApiResponse<List<ContactResponse>>> Handle(GetContactByParameterQuery request,
+		CancellationToken cancellationToken)
+	{
+		var list = await dbContext.Set<Contact>()
+			.Where(x => x.IsActive == true && (
+			(x.Customer.FirstName.ToUpper() + " " + x.Customer.LastName.ToUpper()).Contains(request.CustomerName.ToUpper() + " " + request.CustomerSurname.ToUpper()) ||
+			x.Customer.IdentityNumber.ToUpper().Contains(request.CustomerIdentity.ToUpper())
+			)
+
+		).ToListAsync(cancellationToken);
+
+		var mappedList = mapper.Map<List<Contact>, List<ContactResponse>>(list);
+		return new ApiResponse<List<ContactResponse>>(mappedList);
+	}
 }

@@ -32,7 +32,15 @@ public class AccountsController : ControllerBase
 		return result;
 	}
 
-	//
+	[HttpGet("{IBAN?}/{Name?}/{CustomerName?}")]
+	public async Task<ApiResponse<List<AccountResponse>>> GetByParameter(string IBAN,string Name,string CustomerName)
+	{
+		var operation = new GetAccountByParameterQuery(IBAN,Name,CustomerName);
+		var result = await mediator.Send(operation);
+		return result;
+	}
+
+
 	[HttpPost]
 	public async Task<ApiResponse<AccountResponse>> Post([FromBody] AccountRequest Account)
 	{

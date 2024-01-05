@@ -32,6 +32,14 @@ public class EftTransactionsController : ControllerBase
 		return result;
 	}
 
+	[HttpGet("{senderIban?}/{amount?}/{date?}")]
+	public async Task<ApiResponse<List<EftTransactionResponse>>> GetByParameter(string senderIban, int amount, DateTime date)
+	{
+		var operation = new GetEftTransactionByParameterQuery(senderIban, amount,date);
+		var result = await mediator.Send(operation);
+		return result;
+	}
+
 	[HttpPost]
 	public async Task<ApiResponse<EftTransactionResponse>> Post([FromBody] EftTransactionRequest eftTransaction)
 	{

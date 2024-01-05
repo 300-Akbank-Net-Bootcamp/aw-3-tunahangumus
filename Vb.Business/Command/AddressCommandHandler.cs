@@ -34,6 +34,7 @@ public class AddressCommandHandler :
 		}
 
 		var entity = mapper.Map<AddressRequest, Address>(request.Model);
+		entity.InsertDate = DateTime.UtcNow;
 		var entityResult = await dbContext.AddAsync(entity, cancellationToken);
 		await dbContext.SaveChangesAsync(cancellationToken);
 		var mapped = mapper.Map<Address, AddressResponse>(entityResult.Entity);
@@ -48,7 +49,7 @@ public class AddressCommandHandler :
 		{
 			return new ApiResponse("This address is not found");
 		}
-
+		fromdb.UpdateDate = DateTime.UtcNow;
 		fromdb.Address1 = request.Model.Address1;
 		fromdb.Address2 = request.Model.Address2;
 		fromdb.Country = request.Model.County;

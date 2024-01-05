@@ -33,7 +33,14 @@ public class AddressesController : ControllerBase
         return result;
     }
 
-	//
+	[HttpGet("{FirstName?}/{LastName?}/{IdentiyNumber?}")]
+	public async Task<ApiResponse<List<AddressResponse>>> GetByParameter(string FirstName, string LastName, string IdentiyNumber)
+	{
+		var operation = new GetAddressByParameterQuery(FirstName, LastName, IdentiyNumber);
+		var result = await mediator.Send(operation);
+		return result;
+	}
+
 	[HttpPost]
 	public async Task<ApiResponse<AddressResponse>> Post([FromBody] AddressRequest address)
 	{

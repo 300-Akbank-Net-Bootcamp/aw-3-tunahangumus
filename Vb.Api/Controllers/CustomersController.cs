@@ -32,7 +32,15 @@ public class CustomersController : ControllerBase
         return result;
     }
 
-    [HttpPost]
+	[HttpGet("{FirstName?}/{LastName?}/{IdentiyNumber?}")]
+	public async Task<ApiResponse<List<CustomerResponse>>> GetByParameter(string FirstName, string LastName, string IdentiyNumber)
+	{
+		var operation = new GetCustomerByParameterQuery(FirstName, LastName, IdentiyNumber);
+		var result = await mediator.Send(operation);
+		return result;
+	}
+
+	[HttpPost]
     public async Task<ApiResponse<CustomerResponse>> Post([FromBody] CustomerRequest customer)
     {
         var operation = new CreateCustomerCommand(customer);

@@ -13,5 +13,7 @@ public class CreateCustomerValidator : AbstractValidator<CustomerRequest>
         RuleFor(x => x.DateOfBirth).NotEmpty();
 
         RuleForEach(x => x.Addresses).SetValidator(new CreateAddressValidator());
+        RuleForEach(x => x.Accounts).SetValidator(new CreateAccountValidator());
+        RuleForEach(x => x.Contacts).SetValidator(new CreateContactValidator());
     }
 }

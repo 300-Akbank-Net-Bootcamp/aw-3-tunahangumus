@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Vb.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fd6923cac0dc7b50b7216a02383b9c25ac72a32f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Vb.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Vb.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

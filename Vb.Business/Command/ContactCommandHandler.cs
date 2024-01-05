@@ -34,6 +34,7 @@ public class ContactCommandHandler :
 		}
 
 		var entity = mapper.Map<ContactRequest, Contact>(request.Model);
+		entity.InsertDate = DateTime.UtcNow;
 		var entityResult = await dbContext.AddAsync(entity, cancellationToken);
 		await dbContext.SaveChangesAsync(cancellationToken);
 
@@ -49,7 +50,7 @@ public class ContactCommandHandler :
 		{
 			return new ApiResponse("Record not found");
 		}
-
+		fromdb.UpdateDate = DateTime.UtcNow;
 		fromdb.ContactType = request.Model.ContactType;
 		fromdb.Information = request.Model.Information;
 

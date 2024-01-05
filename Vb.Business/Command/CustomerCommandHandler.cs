@@ -34,7 +34,8 @@ public class CustomerCommandHandler :
         }
         
         var entity = mapper.Map<CustomerRequest, Customer>(request.Model);
-        while (true)
+		entity.InsertDate = DateTime.UtcNow;
+		while (true)
         {
 			entity.CustomerNumber = new Random().Next(1000000, 9999999);
             var checkCustomerNum = await dbContext.Set<Customer>().Where(x => x.CustomerNumber == entity.CustomerNumber)
@@ -62,7 +63,7 @@ public class CustomerCommandHandler :
         {
             return new ApiResponse("Record not found");
         }
-        
+        fromdb.UpdateDate = DateTime.UtcNow;
         fromdb.FirstName = request.Model.FirstName;
         fromdb.LastName = request.Model.LastName;
         

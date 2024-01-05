@@ -34,6 +34,7 @@ public class EftTransactionCommandHandler :
 		}
 
 		var entity = mapper.Map<EftTransactionRequest, EftTransaction>(request.Model);
+		entity.InsertDate = DateTime.UtcNow;
 		var entityResult = await dbContext.AddAsync(entity, cancellationToken);
 		await dbContext.SaveChangesAsync(cancellationToken);
 
@@ -51,7 +52,7 @@ public class EftTransactionCommandHandler :
 		}
 		// other parts should not be changed
 		fromdb.Description = request.Model.Description;
-
+		fromdb.UpdateDate = DateTime.UtcNow;
 		await dbContext.SaveChangesAsync(cancellationToken);
 		return new ApiResponse();
 	}

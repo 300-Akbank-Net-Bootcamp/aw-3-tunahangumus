@@ -46,6 +46,7 @@ public class AccountCommandHandler :
 			}
 			else
 			{
+				entity.InsertDate = DateTime.UtcNow;
 				var entityResult = await dbContext.AddAsync(entity, cancellationToken);
 				await dbContext.SaveChangesAsync(cancellationToken);
 				var mapped = mapper.Map<Account, AccountResponse>(entityResult.Entity);
@@ -67,6 +68,7 @@ public class AccountCommandHandler :
 		fromdb.Balance = request.Model.Balance;
 		fromdb.CurrencyType = request.Model.CurrencyType;
 		fromdb.Name = request.Model.Name;
+		fromdb.UpdateDate = DateTime.UtcNow;
 
 		await dbContext.SaveChangesAsync(cancellationToken);
 		return new ApiResponse();

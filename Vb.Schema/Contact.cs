@@ -7,7 +7,6 @@ public class ContactRequest : BaseRequest
 {
     [JsonIgnore]
     public int Id { get; set; }
-    
     public int CustomerId { get; set; }
     public string ContactType { get; set; }
     public string Information { get; set; }
